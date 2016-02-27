@@ -7,14 +7,17 @@
 // An implementation Howard Hinnant's "Types don't know #" proposal [1],
 // with the following differences:
 //
-//  - The nested member result_type is renamed key_type, because
-//    result_type is not the result of operator().
+//  - A hash algorithm returns its "value" by calling value(). Forcing
+//    an explicit conversion seemed a bit heavy-handed for extracting
+//    the hash value.
 //
-//  - The contiguously_hashable trait is re-designed as trivially
-//    comparable since that seems to entaial the later.
+//  - The contiguously_hashable trait is re-conceived as trivially
+//    comparable since that seems to entail the latter. EoP would
+//    probably call this "uniquely represented".
 //
-//  - Hash_algorithms are not explicitly convertible to the
-//    result type. The function call operator is used instead.
+//  - Added iterator overloads of hash_append.
+//
+//  - Some of the concept names have changed a bit.
 //
 // [1] http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3980.html
 
